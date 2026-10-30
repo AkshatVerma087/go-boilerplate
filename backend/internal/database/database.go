@@ -9,3 +9,5 @@ type Database struct {
 	Pool *pgxpool.Pool
 	log  *zerolog.Logger
 }
+
+const DatabasePingTimeout = 10
