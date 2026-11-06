@@ -47,3 +47,4 @@ func (j *JobService) HandleWelcomeEmailTask(ctx context.Context, task *asynq.Tas
 
 	return nil
 }
+

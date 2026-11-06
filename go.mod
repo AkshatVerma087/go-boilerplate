@@ -43,6 +43,7 @@ require (
 	github.com/newrelic/go-agent/v3/integrations/nrpgx5 v1.3.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/redis/go-redis/v9 v9.14.1 // indirect
+	github.com/resend/resend-go/v4 v4.12.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spf13/cast v1.10.0 // indirect
