@@ -8,7 +8,7 @@ func (c *Client) SendWelcomeEmail(to, firstName string) error {
 	return c.SendEmail(
 		to,
 		"Welcome to boilerplate!",
-		TemplateWelcpme,
+		TemplateWelcome,
 		data,
 	)
 }
