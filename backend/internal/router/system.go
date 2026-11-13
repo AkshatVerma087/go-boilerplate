@@ -10,5 +10,5 @@ func registerSystemRoutes(r *echo.Echo, h *handler.Handlers) {
 
 	r.Static("/static", "static")
 
-	r.GET("/docs", h.OpenAI.ServeOpenAPIUI)
+	r.GET("/docs", h.OpenAPI.ServeOpenAPIUI)
 }

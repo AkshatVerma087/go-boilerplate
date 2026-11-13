@@ -34,7 +34,7 @@ func (tm *TracingMiddleware) NewRelicMiddleware() echo.MiddlewareFunc {
 }
 
 
-func (tm *TracingMiddleware) EnhancingTracing() echo.MiddlewareFunc {
+func (tm *TracingMiddleware) EnhanceTracing() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			txn := newrelic.FromContext(c.Request().Context())
