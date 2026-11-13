@@ -4,21 +4,21 @@ import (
 	"os"
 	"strings"
 
-	_ "github.com/joho/godotenv/autoload"
-	"github.com/knadh/koanf/v2"
-	"github.com/knadh/koanf/providers/env"
-	"github.com/rs/zerolog"
 	"github.com/go-playground/validator/v10"
+	_ "github.com/joho/godotenv/autoload"
+	"github.com/knadh/koanf/providers/env"
+	"github.com/knadh/koanf/v2"
+	"github.com/rs/zerolog"
 )
 
 type Config struct {
-	Primary  		Primary        `koanf:"primary" validate:"required"`
-	Server   		ServerConfig   `koanf:"server" validate:"required"`
-	Database 		DatabaseConfig `koanf:"database" validate:"required"`
-	Auth     		AuthConfig     `koanf:"auth" validate:"required"`
-	Redis    		RedisConfig    `koanf:"redis" validate:"required"`
-	Integration 	IntegrationConfig	 `koanf:"integration" validate:"required"`
-	Observability 	*ObservabilityConfig `koanf:"observability"`
+	Primary       Primary              `koanf:"primary" validate:"required"`
+	Server        ServerConfig         `koanf:"server" validate:"required"`
+	Database      DatabaseConfig       `koanf:"database" validate:"required"`
+	Auth          AuthConfig           `koanf:"auth" validate:"required"`
+	Redis         RedisConfig          `koanf:"redis" validate:"required"`
+	Integration   IntegrationConfig    `koanf:"integration" validate:"required"`
+	Observability *ObservabilityConfig `koanf:"observability"`
 }
 
 type Primary struct {
@@ -51,7 +51,7 @@ type RedisConfig struct {
 }
 
 type IntegrationConfig struct {
-	ResendAPIKey string `koanf:"resend_api_key validate:"required"`
+	ResendAPIKey string `koanf:"resend_api_key" validate:"required"`
 }
 
 type AuthConfig struct {
@@ -59,13 +59,13 @@ type AuthConfig struct {
 }
 
 func LoadConfig() (*Config, error) {
-	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr},).With().Timestamp().Logger()
+	logger := zerolog.New(zerolog.ConsoleWriter{Out: os.Stderr}).With().Timestamp().Logger()
 	k := koanf.New(".")
 
 	err := k.Load(env.Provider("BOILERPLATE_", ".", func(s string) string {
 		return strings.ToLower(strings.TrimPrefix(s, "BOILERPLATE_"))
 	}), nil)
-	
+
 	if err != nil {
 		logger.Fatal().Err(err).Msg("failed to load configuration")
 	}
