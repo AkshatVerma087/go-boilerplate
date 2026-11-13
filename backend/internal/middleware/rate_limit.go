@@ -6,7 +6,7 @@ type RateLimitMiddleware struct {
 	server *server.Server
 }
 
-func NewRelicMiddleware(s *server.Server) *RateLimitMiddleware {
+func NewRateLimitMiddleware(s *server.Server) *RateLimitMiddleware {
 	return &RateLimitMiddleware{
 		server: s,
 	}
